@@ -26,41 +26,61 @@ Be sure to call the following hardware your own:
 
 ### Prepare the software, pt. 1
 
-Follow the below step-by-step instructions:
-
 1. Connect the Micro SD card to the computer
 2. Download, install, and run **Raspberry Pi Imager**:
 	* Tested with v1.6 on Windows
 	* Choose OS: Raspberry Pi OS (other) -> **Raspberry Pi OS Lite (32-bit)**
 	* Write to the Micro SD card
-2. Enable SSH & WiFi:
-	1. It may be required to eject and re-insert the SD card
-	2. Open a file explorer, navigate to the drive called **"boot"**
-	2. Create a file called **`ssh`** (no extension, no content) on root level
-	2. Create a file called **`wpa_supplicant.conf`** on root level with the following content:
-```
-country=DE
-ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
-update_config=1
-network={
-	ssid="UAreOnMyWifiChannel@gmail.com"
-	psk="!PWD"
-	key_mgmt=WPA-PSK
-}
-```
-4. Eject the Micro SD card from the computer
-4. Insert the Micro SD card into the Ras Pi, connect the ethernet cable, connect the power supply; the Ras Pi will automatically start
 
 
 ### Prepare the software, pt. 2
 
-1. Clone this repository.
-2. `cd` inside the cloned folder.
+1. Clone this repository
+2. Enable SSH & WiFi:
+	* It may be required to eject and re-insert the SD card
+	1. Open a file explorer, navigate to the drive called **"boot"**
+	2. Open another file explorer, navigate to the cloned repo folder
+	2. Replace the WiFi password inside the cloned `SD_card/wpa_supplicant.conf` file
+	2. Copy all items from cloned the `SD_card/` folder to the SD card's root folder
+
+
+### Prepare the software, pt. 3
+
+1. Eject the Micro SD card from the computer
+2. Insert the Micro SD card into the Ras Pi, connect the ethernet cable, connect the power supply; the Ras Pi will automatically start
 2. Register the Ras Pi under a proper host name in your router, e.g. *"my-home-cctv-aviary"*
-2. Initially connect via SSH: `ssh pi@my-home-cctv-aviary`
+2. Initially connect via SSH: `ssh pi@my-home-cctv-XYZ`
 	* There will be a prompt to add the fingerprint, type `yes`
 	* The default credentials for any Ras Pi are `pi` (user) and `raspberry` (password)
 	* Close the SSH connection
+
+
+## ...steady, ...
+
+1. Create file/folder structure: `ssh pi@my-home-cctv-XYZ 'bash -s' < ./prepare.sh`
+2. Copy relevant files to the Ras Pi: `scp -r ./opt/my-home-cctv/ pi@my-home-cctv-XYZ:/opt/`
+2. Configure Ras Pi: `ssh pi@my-home-cctv-XYZ 'bash -s' < ./configure.sh`
+2. Install *my-home-cctv* dependencies (Mind: The Ras Pi will automatically restart after this step): `ssh pi@my-home-cctv-XYZ 'bash -s' < ./install.sh`
+2. Setup cron jobs for *my-home-cctv*:
+	1. Connect via SSH again: `ssh pi@my-home-cctv-XYZ`
+	2. Start `crontab -e`, select `/bin/nano` as your editor if prompted
+	3. Jump to the end of the file by pressing CTRL+END, and enter the following content:
+```
+# Auto-start `my-home-cctv` on each boot
+@reboot /opt/my-home-cctv/clean.sh && /opt/my-home-cctv/start.sh
+
+# Reboot weekly at Saturday 3:30am
+30 3 * * 6 sudo shutdown -r 0
+```
+*
+	4. Leave the editor by pressing STRG+X, then Y, then ENTER
+	5. Restart the Ras Pi: `sudo shutdown -r 0`
+
+
+## ...go! 🏃‍♂️ 🏃‍♀️
+
+Done!
+Now a video stream is available via `rtsp://username:password@my-home-cctv-XYZ:8554/h264`.
 
 
 ## Sources
@@ -68,3 +88,7 @@ network={
 * [GitHub: IanStorm/my-smart-home-ras-pi](https://github.com/IanStorm/my-smart-home-ras-pi)
 * [The official Raspberry Pi documentation](https://projects.raspberrypi.org/en/projects/raspberry-pi-getting-started)
 * [How To Setup Ras Pi WiFi](https://core-electronics.com.au/tutorials/raspberry-pi-zerow-headless-wifi-setup.html)
+* [How to enable RasPi cam without raspi-config](https://raspberrypi.stackexchange.com/a/29972)
+* [GitHub: BreeeZe/rpos](https://github.com/BreeeZe/rpos/tree/master)
+* [How to disable BT](https://di-marco.net/blog/it/2020-04-18-tips-disabling_bluetooth_on_raspberry_pi/#add-below-save-and-close-the-file)
+* [Crontab man page](https://linux.die.net/man/5/crontab)
