@@ -7,7 +7,7 @@ Describes setup of "self-made" smart cameras in my home.
 ## Ready, ...
 
 
-### Prepare the hardware 🧰
+### Prepare the hardware, pt. 1 🧰
 
 Be sure to call the following hardware your own:
 
@@ -21,7 +21,7 @@ Be sure to call the following hardware your own:
 	* 1x Power supply, Pi-compatible 🔌
 	* 1x IR camera, Pi-compatible 📷 *(here: Waveshare RPi Camera (F))*
 	* 1x Cable: Pi<->Camera *(here: RPi Zero V1.3 Camera Cable)*
-	* WiFi access
+	* WiFi access 📡
 
 
 ### Prepare the software, pt. 1
@@ -47,12 +47,17 @@ Be sure to call the following hardware your own:
 ### Prepare the software, pt. 3
 
 1. Eject the Micro SD card from the computer
-2. Insert the Micro SD card into the Ras Pi, connect the ethernet cable, connect the power supply; the Ras Pi will automatically start
+2. Insert the Micro SD card into the Ras Pi, connect the power supply; the Ras Pi will automatically start
 2. Register the Ras Pi under a proper host name in your router, e.g. *"my-home-cctv-aviary"*
 2. Initially connect via SSH: `ssh pi@my-home-cctv-XYZ`
 	* There will be a prompt to add the fingerprint, type `yes`
 	* The default credentials for any Ras Pi are `pi` (user) and `raspberry` (password)
 	* Close the SSH connection
+
+
+### Prepare the hardware, pt. 2 🧰
+
+Calibrate the IR LEDs by following [this (German) manual](https://github.com/MakeMagazinDE/Nistkasten-V2/blob/main/Hinweise/Problembehebung.md).
 
 
 ## ...steady, ...
@@ -67,7 +72,7 @@ Be sure to call the following hardware your own:
 	3. Jump to the end of the file by pressing CTRL+END, and enter the following content:
 ```
 # Auto-start `my-home-cctv` on each boot
-@reboot /opt/my-home-cctv/clean.sh && /opt/my-home-cctv/start.sh
+@reboot /opt/my-home-cctv/get.sh && /opt/my-home-cctv/start.sh
 
 # Reboot weekly at Saturday 3:30am
 30 3 * * 6 sudo shutdown -r 0
@@ -80,7 +85,7 @@ Be sure to call the following hardware your own:
 ## ...go! 🏃‍♂️ 🏃‍♀️
 
 Done!
-Now a video stream is available via `rtsp://username:password@my-home-cctv-XYZ:8554/h264`.
+Now an RTSP video stream is available at `rtsp://my-home-cctv-XYZ:8554/unicast`
 
 
 ## Sources
@@ -89,6 +94,6 @@ Now a video stream is available via `rtsp://username:password@my-home-cctv-XYZ:8
 * [The official Raspberry Pi documentation](https://projects.raspberrypi.org/en/projects/raspberry-pi-getting-started)
 * [How To Setup Ras Pi WiFi](https://core-electronics.com.au/tutorials/raspberry-pi-zerow-headless-wifi-setup.html)
 * [How to enable RasPi cam without raspi-config](https://raspberrypi.stackexchange.com/a/29972)
-* [GitHub: BreeeZe/rpos](https://github.com/BreeeZe/rpos/tree/master)
 * [How to disable BT](https://di-marco.net/blog/it/2020-04-18-tips-disabling_bluetooth_on_raspberry_pi/#add-below-save-and-close-the-file)
 * [Crontab man page](https://linux.die.net/man/5/crontab)
+* [GitHub: mpromonet/v4l2rtspserver](https://github.com/mpromonet/v4l2rtspserver)
