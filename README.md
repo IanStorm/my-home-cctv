@@ -50,7 +50,7 @@ Be sure to call the following hardware your own:
 ## ...steady, ...
 
 1. Insert the Micro SD card into the Ras Pi, connect the power supply; the Ras Pi will automatically start
-2. Register the Ras Pi under a proper host name in your router, e.g. *"my-home-cctv-aviary"*
+2. Register the Ras Pi under a proper host name in your router, e.g. *"my-home-cctv-nestbox"*
 2. Initially connect via SSH: `ssh admin@my-home-cctv-XYZ`
 	* There will be a prompt to add the fingerprint, type `yes`
 	* The default credentials for *motionEyeOS* are `admin` (user) and empty password
