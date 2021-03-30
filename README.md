@@ -9,7 +9,7 @@ Describes setup of "self-made" smart cameras in my home.
 ## Ready, ...
 
 
-### Prepare the hardware, pt. 1 🧰 1️⃣
+### Prepare the hardware 🧰
 
 Be sure to call the following hardware your own:
 
@@ -26,7 +26,7 @@ Be sure to call the following hardware your own:
 	* WiFi access 📡
 
 
-### Prepare the software, pt. 1 🦙 1️⃣
+### Prepare the software 🦙
 
 1. Download and unzip the [latest version of **motionEyeOS** from GitHub](https://github.com/ccrisan/motioneyeos/releases/latest) *(here: v20200606)*
 	* for *Pi Zero* pick the plain Ras Pi image, i.e. `motioneyeos-raspberrypi-VERSION.img.xz`
@@ -36,11 +36,7 @@ Be sure to call the following hardware your own:
 	* Tested with v1.6 on Windows
 	* Choose OS: Custom Image -> pick the previously downloaded `.img` file
 	* Write to the Micro SD card
-
-
-### Prepare the software, pt. 2 🦙 2️⃣
-
-1. Clone this repository
+2. Clone this repository
 2. Enable WiFi:
 	* on *motionEyeOS* SSH is enabled per default
 	1. Eject and re-insert the SD card
@@ -49,11 +45,6 @@ Be sure to call the following hardware your own:
 	2. Replace the WiFi password inside the cloned `SD_card/wpa_supplicant.conf` file
 	2. Copy all items from cloned the `SD_card/` folder to the SD card's root folder
 2. Eject the Micro SD card from the computer
-
-
-### Prepare the hardware, pt. 2 🧰 2️⃣
-
-Calibrate the IR LEDs by following [this (German) manual](https://github.com/MakeMagazinDE/Nistkasten-V2/blob/main/Hinweise/Problembehebung.md).
 
 
 ## ...steady, ...
@@ -65,6 +56,7 @@ Calibrate the IR LEDs by following [this (German) manual](https://github.com/Mak
 	* The default credentials for *motionEyeOS* are `admin` (user) and empty password
 	* Close the SSH connection
 2. Copy configuration files to the Ras Pi: `scp -r ./data/etc/ admin@my-home-cctv-XYZ:/data/`
+2. Calibrate the IR LEDs by following [this (German) manual](https://github.com/MakeMagazinDE/Nistkasten-V2/blob/main/Hinweise/Problembehebung.md).
 
 
 ## ...go! 🏃‍♂️ 🏃‍♀️
