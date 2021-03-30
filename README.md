@@ -46,17 +46,7 @@ Be sure to call the following hardware your own:
 	2. Open another file explorer, navigate to the cloned repo folder
 	2. Replace the WiFi password inside the cloned `SD_card/wpa_supplicant.conf` file
 	2. Copy all items from cloned the `SD_card/` folder to the SD card's root folder
-
-
-### Prepare the software, pt. 3 🦙 3️⃣
-
-1. Eject the Micro SD card from the computer
-2. Insert the Micro SD card into the Ras Pi, connect the power supply; the Ras Pi will automatically start
-2. Register the Ras Pi under a proper host name in your router, e.g. *"my-home-cctv-aviary"*
-2. Initially connect via SSH: `ssh pi@my-home-cctv-XYZ`
-	* There will be a prompt to add the fingerprint, type `yes`
-	* The default credentials for *motionEyeOS* are `admin` (user) and empty password
-	* Close the SSH connection
+2. Eject the Micro SD card from the computer
 
 
 ### Prepare the hardware, pt. 2 🧰 2️⃣
@@ -66,14 +56,23 @@ Calibrate the IR LEDs by following [this (German) manual](https://github.com/Mak
 
 ## ...steady, ...
 
-...
+1. Insert the Micro SD card into the Ras Pi, connect the power supply; the Ras Pi will automatically start
+2. Register the Ras Pi under a proper host name in your router, e.g. *"my-home-cctv-aviary"*
+2. Initially connect via SSH: `ssh admin@my-home-cctv-XYZ`
+	* There will be a prompt to add the fingerprint, type `yes`
+	* The default credentials for *motionEyeOS* are `admin` (user) and empty password
+	* Close the SSH connection
+2. Copy configuration files to the Ras Pi: `scp -r ./data/etc/ admin@my-home-cctv-XYZ:/data/`
 
 
 ## ...go! 🏃‍♂️ 🏃‍♀️
 
 Done!
-Now the web interface is available at `http://my-home-cctv-XYZ`.
-
+Now the following resources are available:
+* Web interface: `http://my-home-cctv-XYZ`
+* Live stream: `http://my-home-cctv-XYZ:8081`
+* Thumbnail: `http://my-home-cctv-XYZ/picture/1/current/`
+* Embeddable `iframe`: `http://my-home-cctv-XYZ/picture/1/frame/`
 
 ## Sources 📙
 

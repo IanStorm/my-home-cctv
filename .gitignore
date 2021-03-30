@@ -1,0 +1,10 @@
+./data/etc/adjtime
+./data/etc/date.conf
+./data/etc/ntp.conf
+./data/etc/proftpd.conf
+./data/etc/shadow
+./data/etc/shadow-
+./data/etc/smb.conf
+./data/etc/static_ip.conf
+./data/etc/version
+./data/etc/wpa_supplicant.conf
