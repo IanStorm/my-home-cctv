@@ -96,4 +96,3 @@ Now an RTSP video stream is available at `rtsp://my-home-cctv-XYZ:8554/unicast`
 * [How to enable RasPi cam without raspi-config](https://raspberrypi.stackexchange.com/a/29972)
 * [How to disable BT](https://di-marco.net/blog/it/2020-04-18-tips-disabling_bluetooth_on_raspberry_pi/#add-below-save-and-close-the-file)
 * [Crontab man page](https://linux.die.net/man/5/crontab)
-* [GitHub: mpromonet/v4l2rtspserver](https://github.com/mpromonet/v4l2rtspserver)

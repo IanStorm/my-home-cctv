@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker pull mpromonet/v4l2rtspserver:latest
+docker pull ianstorm/cctv2http:latest
