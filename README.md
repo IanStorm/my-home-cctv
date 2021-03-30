@@ -7,7 +7,7 @@ Describes setup of "self-made" smart cameras in my home.
 ## Ready, ...
 
 
-### Prepare the hardware, pt. 1 🧰
+### Prepare the hardware, pt. 1 🧰 1️⃣
 
 Be sure to call the following hardware your own:
 
@@ -24,7 +24,7 @@ Be sure to call the following hardware your own:
 	* WiFi access 📡
 
 
-### Prepare the software, pt. 1
+### Prepare the software, pt. 1 🦙 1️⃣
 
 1. Connect the Micro SD card to the computer
 2. Download, install, and run **Raspberry Pi Imager**:
@@ -33,7 +33,7 @@ Be sure to call the following hardware your own:
 	* Write to the Micro SD card
 
 
-### Prepare the software, pt. 2
+### Prepare the software, pt. 2 🦙 2️⃣
 
 1. Clone this repository
 2. Enable SSH & WiFi:
@@ -44,7 +44,7 @@ Be sure to call the following hardware your own:
 	2. Copy all items from cloned the `SD_card/` folder to the SD card's root folder
 
 
-### Prepare the software, pt. 3
+### Prepare the software, pt. 3 🦙 3️⃣
 
 1. Eject the Micro SD card from the computer
 2. Insert the Micro SD card into the Ras Pi, connect the power supply; the Ras Pi will automatically start
@@ -55,7 +55,7 @@ Be sure to call the following hardware your own:
 	* Close the SSH connection
 
 
-### Prepare the hardware, pt. 2 🧰
+### Prepare the hardware, pt. 2 🧰 2️⃣
 
 Calibrate the IR LEDs by following [this (German) manual](https://github.com/MakeMagazinDE/Nistkasten-V2/blob/main/Hinweise/Problembehebung.md).
 
@@ -88,7 +88,7 @@ Done!
 Now an RTSP video stream is available at `rtsp://my-home-cctv-XYZ:8554/unicast`
 
 
-## Sources
+## Sources 📙
 
 * [GitHub: IanStorm/my-smart-home-ras-pi](https://github.com/IanStorm/my-smart-home-ras-pi)
 * [The official Raspberry Pi documentation](https://projects.raspberrypi.org/en/projects/raspberry-pi-getting-started)
@@ -96,3 +96,5 @@ Now an RTSP video stream is available at `rtsp://my-home-cctv-XYZ:8554/unicast`
 * [How to enable RasPi cam without raspi-config](https://raspberrypi.stackexchange.com/a/29972)
 * [How to disable BT](https://di-marco.net/blog/it/2020-04-18-tips-disabling_bluetooth_on_raspberry_pi/#add-below-save-and-close-the-file)
 * [Crontab man page](https://linux.die.net/man/5/crontab)
+* https://electreeks.de/project/rpi-nistkasten-infrarot-kamera-anleitung/
+* https://electreeks.de/raspberry-pi-kamera-installieren-anschliessen/
