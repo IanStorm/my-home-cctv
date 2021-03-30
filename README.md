@@ -26,19 +26,23 @@ Be sure to call the following hardware your own:
 
 ### Prepare the software, pt. 1 🦙 1️⃣
 
-1. Connect the Micro SD card to the computer
+1. Download and unzip the [latest version of **motionEyeOS** from GitHub](https://github.com/ccrisan/motioneyeos/releases/latest) *(here: v20200606)*
+	* for *Pi Zero* pick the plain Ras Pi image, i.e. `motioneyeos-raspberrypi-VERSION.img.xz`
+	* don't pick the one for Pi 2, Pi 3, or Pi 4
+2. Connect the Micro SD card to the computer
 2. Download, install, and run **Raspberry Pi Imager**:
 	* Tested with v1.6 on Windows
-	* Choose OS: Raspberry Pi OS (other) -> **Raspberry Pi OS Lite (32-bit)**
+	* Choose OS: Custom Image -> pick the previously downloaded `.img` file
 	* Write to the Micro SD card
 
 
 ### Prepare the software, pt. 2 🦙 2️⃣
 
 1. Clone this repository
-2. Enable SSH & WiFi:
-	* It may be required to eject and re-insert the SD card
-	1. Open a file explorer, navigate to the drive called **"boot"**
+2. Enable WiFi:
+	* on *motionEyeOS* SSH is enabled per default
+	1. Eject and re-insert the SD card
+	2. Open a file explorer, navigate to the drive called **"boot"**
 	2. Open another file explorer, navigate to the cloned repo folder
 	2. Replace the WiFi password inside the cloned `SD_card/wpa_supplicant.conf` file
 	2. Copy all items from cloned the `SD_card/` folder to the SD card's root folder
@@ -51,7 +55,7 @@ Be sure to call the following hardware your own:
 2. Register the Ras Pi under a proper host name in your router, e.g. *"my-home-cctv-aviary"*
 2. Initially connect via SSH: `ssh pi@my-home-cctv-XYZ`
 	* There will be a prompt to add the fingerprint, type `yes`
-	* The default credentials for any Ras Pi are `pi` (user) and `raspberry` (password)
+	* The default credentials for *motionEyeOS* are `admin` (user) and empty password
 	* Close the SSH connection
 
 
@@ -62,42 +66,23 @@ Calibrate the IR LEDs by following [this (German) manual](https://github.com/Mak
 
 ## ...steady, ...
 
-1. Create file/folder structure: `ssh pi@my-home-cctv-XYZ 'bash -s' < ./prepare.sh`
-2. Copy relevant files to the Ras Pi: `scp -r ./opt/my-home-cctv/ pi@my-home-cctv-XYZ:/opt/`
-2. Configure Ras Pi: `ssh pi@my-home-cctv-XYZ 'bash -s' < ./configure.sh`
-2. Install *my-home-cctv* dependencies (Mind: The Ras Pi will automatically restart after this step): `ssh pi@my-home-cctv-XYZ 'bash -s' < ./install.sh`
-2. Setup cron jobs for *my-home-cctv*:
-	1. Connect via SSH again: `ssh pi@my-home-cctv-XYZ`
-	2. Start `crontab -e`, select `/bin/nano` as your editor if prompted
-	3. Jump to the end of the file by pressing CTRL+END, and enter the following content:
-```
-# Auto-start `my-home-cctv` on each boot
-@reboot /opt/my-home-cctv/get.sh && /opt/my-home-cctv/start.sh
-
-# Reboot weekly on Saturday 3:30am
-30 3 * * 6 sudo shutdown -r 0
-
-# Cleanup monthly on 2nd 3:00am
-0 3 2 * * /opt/my-home-cctv/clean.sh
-```
-*
-	4. Leave the editor by pressing STRG+X, then Y, then ENTER
-	5. Restart the Ras Pi: `sudo shutdown -r 0`
+...
 
 
 ## ...go! 🏃‍♂️ 🏃‍♀️
 
 Done!
-Now an RTSP video stream is available at `rtsp://my-home-cctv-XYZ:8554/unicast`
+Now the web interface is available at `http://my-home-cctv-XYZ`.
 
 
 ## Sources 📙
 
-* [GitHub: IanStorm/my-smart-home-ras-pi](https://github.com/IanStorm/my-smart-home-ras-pi)
+* [GH IanStorm/my-smart-home-ras-pi](https://github.com/IanStorm/my-smart-home-ras-pi)
 * [The official Raspberry Pi documentation](https://projects.raspberrypi.org/en/projects/raspberry-pi-getting-started)
 * [How To Setup Ras Pi WiFi](https://core-electronics.com.au/tutorials/raspberry-pi-zerow-headless-wifi-setup.html)
+* [Pi Zero with motionEyeOS](https://www.raspberrypi-spy.co.uk/2017/04/raspberry-pi-zero-w-cctv-camera-with-motioneyeos)
+* [GH ccrisan/motioneyeos](https://github.com/ccrisan/motioneyeos)
 * [How to enable RasPi cam without raspi-config](https://raspberrypi.stackexchange.com/a/29972)
 * [How to disable BT](https://di-marco.net/blog/it/2020-04-18-tips-disabling_bluetooth_on_raspberry_pi/#add-below-save-and-close-the-file)
-* [Crontab man page](https://linux.die.net/man/5/crontab)
 * https://electreeks.de/project/rpi-nistkasten-infrarot-kamera-anleitung/
 * https://electreeks.de/raspberry-pi-kamera-installieren-anschliessen/

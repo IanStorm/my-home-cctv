@@ -1,7 +1,0 @@
-# Disable Bluetooth
-dtoverlay=disable-bt
-
-gpu_mem=128
-
-# Start camera
-start_x=1
