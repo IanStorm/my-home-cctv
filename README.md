@@ -1,5 +1,7 @@
 # My Home - CCTV
 
+[![GitHub Actions](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2FIanStorm%2Fmy-home-cctv%2Fbadge%3Fref%3Dmain&style=flat&label=build&logo=none)](https://actions-badge.atrox.dev/IanStorm/my-home-cctv/goto?ref=main)
+
 Garage project for **private purposes**.
 Describes setup of "self-made" smart cameras in my home.
 
