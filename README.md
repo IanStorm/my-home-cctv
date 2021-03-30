@@ -74,8 +74,11 @@ Calibrate the IR LEDs by following [this (German) manual](https://github.com/Mak
 # Auto-start `my-home-cctv` on each boot
 @reboot /opt/my-home-cctv/get.sh && /opt/my-home-cctv/start.sh
 
-# Reboot weekly at Saturday 3:30am
+# Reboot weekly on Saturday 3:30am
 30 3 * * 6 sudo shutdown -r 0
+
+# Cleanup monthly on 2nd 3:00am
+0 3 2 * * /opt/my-home-cctv/clean.sh
 ```
 *
 	4. Leave the editor by pressing STRG+X, then Y, then ENTER
