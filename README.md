@@ -64,7 +64,7 @@ Be sure to call the following hardware your own:
 Done!
 Now the following resources are available:
 * Web interface: `http://my-home-cctv-XYZ`
-* Live stream: `http://my-home-cctv-XYZ:8081`
+* (MJPEG) Live stream: `http://my-home-cctv-XYZ:8081`
 * Thumbnail: `http://my-home-cctv-XYZ/picture/1/current/`
 * Embeddable `iframe`: `http://my-home-cctv-XYZ/picture/1/frame/`
 
