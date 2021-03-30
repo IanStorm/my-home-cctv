@@ -43,7 +43,7 @@ Be sure to call the following hardware your own:
 	2. Open a file explorer, navigate to the drive called **"boot"**
 	2. Open another file explorer, navigate to the cloned repo folder
 	2. Replace the WiFi password inside the cloned `SD_card/wpa_supplicant.conf` file
-	2. Copy all items from cloned the `SD_card/` folder to the SD card's root folder
+	2. Copy all items from the cloned `SD_card/` folder to the SD card's root folder
 2. Eject the Micro SD card from the computer
 
 
