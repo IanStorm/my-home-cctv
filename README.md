@@ -54,7 +54,8 @@ Be sure to call the following hardware your own:
 2. Initially connect via SSH: `ssh admin@my-home-cctv-XYZ`
 	* There will be a prompt to add the fingerprint, type `yes`
 	* The default credentials for *motionEyeOS* are `admin` (user) and empty password
-	* Close the SSH connection
+	1. Set a new password (for users `admin` & `root`): `PASSWORD=<enter_password> adminpasswd`
+	2. Close the SSH connection
 2. Copy configuration files to the Ras Pi: `scp -r ./data/etc/ admin@my-home-cctv-XYZ:/data/`
 2. Calibrate the IR LEDs by following [this (German) manual](https://github.com/MakeMagazinDE/Nistkasten-V2/blob/main/Hinweise/Problembehebung.md).
 
@@ -79,3 +80,4 @@ Now the following resources are available:
 * [How to disable BT](https://di-marco.net/blog/it/2020-04-18-tips-disabling_bluetooth_on_raspberry_pi/#add-below-save-and-close-the-file)
 * https://electreeks.de/project/rpi-nistkasten-infrarot-kamera-anleitung/
 * https://electreeks.de/raspberry-pi-kamera-installieren-anschliessen/
+* [How to change motionEyeOS passwords](https://github.com/ccrisan/thingos/wiki/User-Accounts)
